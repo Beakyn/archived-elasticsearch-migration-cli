@@ -1,9 +1,12 @@
 {
-  "name": "@beakyn/es-migration-cli",
-  "version": "1.0.0",
+  "name": "@onsmart/elasticsearch-migration-cli",
+  "private": false,
+  "version": "1.0.1",
   "type": "module",
   "source": "src/index.ts",
-  "bin": "./dist/cli.module.js",
+  "bin": {
+    "elasticsearch-migration-cli": "./dist/cli.module.js"
+  },
   "typings": "./dist/index.d.ts",
   "exports": {
     "require": "./dist/index.cjs",
@@ -13,6 +16,7 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
+    "publish": "npm publish --access=public --scope=onsmart",
     "build": "microbundle -i src/index.ts -i src/cli.ts",
     "dev": "microbundle watch"
   },

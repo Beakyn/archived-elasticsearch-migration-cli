@@ -68,7 +68,7 @@ const createName = (index: string, version: string) => {
   return `${index}-migration-v${version}`
 }
 
-const createTemplate = (name: string) => `import { Migration } from 'es-migration-cli'
+const createTemplate = (name: string) => `import { Migration } from '@onsmart/elasticsearch-migration-cli'
 
 export const name = '${name}'
 
