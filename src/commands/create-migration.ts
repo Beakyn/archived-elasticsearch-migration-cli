@@ -68,17 +68,15 @@ const createName = (index: string, version: string) => {
   return `${index}-migration-v${version}`
 }
 
-const createTemplate = (name: string) => `import { MigrationFn } from 'umzug'
-
-import { MigrationContext } from '../../commands/core/migration.context'
+const createTemplate = (name: string) => `import { Migration } from 'es-migration-cli'
 
 export const name = '${name}'
 
-export const up: MigrationFn<MigrationContext> = async ({ context }) => {
+export const up: Migration = async ({ context }) => {
   // Write your migration here
 }
 
-export const down: MigrationFn<MigrationContext> = async ({ context }) => {
+export const down: Migration = async ({ context }) => {
   // Write your migration here
 }
 
