@@ -79,7 +79,6 @@ export const up: Migration = async ({ context }) => {
 export const down: Migration = async ({ context }) => {
   // Write your migration here
 }
-
 `
 const addAliasToMigrationConfigFile = (folder: string, alias: string) => {
   if (fs.existsSync(MIGRATION_FILE_PATH)) {
