@@ -1,5 +1,5 @@
 {
-  "name": "es-migration-cli",
+  "name": "@beakyn/es-migration-cli",
   "version": "1.0.0",
   "type": "module",
   "source": "src/index.ts",
