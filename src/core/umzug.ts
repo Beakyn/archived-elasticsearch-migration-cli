@@ -1,21 +1,25 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import { Client } from '@elastic/elasticsearch'
+import fs from 'fs'
+import path from 'path'
+import { createRequire } from 'module';
 
 import { Umzug, memoryStorage } from 'umzug'
 
 import { ElasticsearchStorage } from '../storage/elasticsearch.storage'
-
-import { createConnection } from './elasticsearch.connection'
 import { createInitialContext, MigrationContext } from './migration.context'
 
+const require = createRequire(import.meta.url);
+
+require('ts-node/register')
+
 export const createUmzugInstance = (
+  elasticsearchClient: Client,
   isSaving: boolean,
   appVersion?: string
 ): {
   umzugInstance: Umzug<MigrationContext>
   elasticsearchStorage: ElasticsearchStorage<MigrationContext>
 } => {
-  const elasticsearchClient = createConnection()
   const elasticsearchStorage = new ElasticsearchStorage(
     elasticsearchClient,
     'onsmart-core-migrations-metadata'

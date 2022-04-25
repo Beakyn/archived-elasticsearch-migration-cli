@@ -1,16 +1,7 @@
-import { Command } from 'commander'
+import { MigrationContext } from "./core/migration.context";
+import { MigrationFn } from "umzug";
 
-import { addProgram as addUpCommand } from './commands/up'
-import { addProgram as addDownCommand } from './commands/down'
-import { addProgram as addSetupCommand } from './commands/setup'
-import { addProgram as addCreateMigrationCommand } from './commands/create-migration'
+export * from "./core/migration.context";
+export * from "./core/umzug";
 
-
-const program = new Command()
-
-addUpCommand(program)
-addDownCommand(program)
-addSetupCommand(program)
-addCreateMigrationCommand(program)
-
-program.parse()
+export type Migration = MigrationFn<MigrationContext>

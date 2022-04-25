@@ -1,5 +1,6 @@
 import { Command } from 'commander'
 
+import { createConnection } from '../core/elasticsearch.connection'
 import { createUmzugInstance } from '../core/umzug'
 
 /**
@@ -21,10 +22,18 @@ function getIdentifierByVersion(version: string) {
      .command('down')
      .option('--migration <string>')
      .option('--appVersion <string>')
+     .option('--elasticsearchCluster <string>')
+     .option('--elasticsearchApiKey <string>')
      .option('--save')
      .action(async (options) => {
-       const { migration, appVersion, save } = options
-       const { umzugInstance, elasticsearchStorage } = createUmzugInstance(save, appVersion)
+       const { migration, appVersion, save, elasticsearchCluster, elasticsearchApiKey } = options
+
+       if (save && !elasticsearchCluster) {
+        throw new Error(`Elasticsearch Cluster URL is required`)
+       }
+       
+       const elasticsearchClient = createConnection(elasticsearchCluster, elasticsearchApiKey)
+       const { umzugInstance, elasticsearchStorage } = createUmzugInstance(elasticsearchClient, save, appVersion)
    
        if (!migration && !appVersion) throw new Error('The parameters are required')
    

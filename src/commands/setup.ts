@@ -1,5 +1,6 @@
 import { Command } from 'commander'
 import { Client } from '@elastic/elasticsearch'
+import { createConnection } from 'core/elasticsearch.connection'
 
 /**
  * CLI
@@ -15,12 +16,7 @@ export const addProgram = (program: Command) => {
         throw new Error(`Elasticsearch Cluster URL is required`)
       }
   
-      const elasticsearchClient = new Client({
-        node: elasticsearchCluster,
-        auth: {
-          apiKey: elasticsearchApiKey
-        }
-      })
+      const elasticsearchClient = createConnection(elasticsearchCluster, elasticsearchApiKey)
   
       migrationMetadataAlias = migrationMetadataAlias ?? 'onsmart-core-migrations-metadata'
   

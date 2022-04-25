@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "source": "src/index.ts",
+  "bin": "./dist/cli.module.js",
+  "typings": "./dist/index.d.ts",
   "exports": {
     "require": "./dist/index.cjs",
     "default": "./dist/index.modern.js"
@@ -11,14 +13,15 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle -i src/index.ts -i src/cli.ts",
     "dev": "microbundle watch"
   },
   "dependencies": {
     "@elastic/elasticsearch": "7.17.0",
     "commander": "9.2.0",
     "inquirer": "8.2.2",
-    "umzug": "3.1.1"
+    "umzug": "3.1.1",
+    "ts-node": "10.2.1"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",
