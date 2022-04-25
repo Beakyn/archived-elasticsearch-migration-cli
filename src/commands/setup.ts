@@ -1,6 +1,5 @@
 import { Command } from 'commander'
-import { Client } from '@elastic/elasticsearch'
-import { createConnection } from 'core/elasticsearch.connection'
+import { createConnection } from '../core/elasticsearch.connection'
 
 /**
  * CLI
