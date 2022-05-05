@@ -27,7 +27,7 @@ export const createUmzugInstance = (
   const umzugInstance = new Umzug<MigrationContext>({
     migrations: {
       glob: 'migrations/indexes/**/*.ts',
-      resolve: ({ path: filepath, context, name }) => {
+      resolve: ({ path: filepath, context }) => {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         // @ts-ignore
         const migration = require(filepath)
@@ -92,8 +92,8 @@ export const createUmzugInstance = (
         // -------------------------
 
         const params = {
-          context,
-          name,
+          context: {...context},
+          name: migration.name,
           path: filepath
         }
 
