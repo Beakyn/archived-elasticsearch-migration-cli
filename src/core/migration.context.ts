@@ -10,7 +10,7 @@ export interface MigrationContext {
 
 export const createInitialContext = (elasticsearchClient: Client): MigrationContext => ({
   elasticsearchClient,
-  // It be will injecting in execution time
+  // These values will be injected in runtime
   alias: '',
   indexName: ''
 })
