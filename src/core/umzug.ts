@@ -77,7 +77,7 @@ export const createUmzugInstance = (
           )
           .filter((versionData) => versionData.versionId < currentVersionData.versionId)
 
-        if (oldVersions.length > 1) {
+        if (oldVersions.length > 0) {
           const lastVersion = oldVersions[oldVersions.length - 1]
 
           context.oldIndexName = `${alias}-${lastVersion.version}`
