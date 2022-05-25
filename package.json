@@ -1,7 +1,7 @@
 {
   "name": "@onsmart/elasticsearch-migration-cli",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.1.1",
   "type": "module",
   "source": "src/index.ts",
   "bin": {
@@ -16,7 +16,6 @@
   "module": "./dist/index.module.js",
   "unpkg": "./dist/index.umd.js",
   "scripts": {
-    "publish": "npm publish --access=public --scope=onsmart",
     "build": "microbundle -i src/index.ts -i src/cli.ts",
     "dev": "microbundle watch"
   },
